@@ -67,7 +67,6 @@ RUN set -x \
     && apt-get clean \
     && mkdir /var/run/sshd
 
-COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY php.ini /usr/local/etc/php/php.ini
 
 RUN set -x \

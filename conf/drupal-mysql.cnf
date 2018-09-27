@@ -1,0 +1,33 @@
+#
+# * Fine Tuning
+#
+max_connections		= 256
+connect_timeout		= 60
+wait_timeout		= 60
+max_allowed_packet	= 512M
+thread_cache_size   = 128
+sort_buffer_size	= 4M
+bulk_insert_buffer_size	= 16M
+tmp_table_size		= 32M
+max_heap_table_size	= 32M
+
+#
+# * Query Cache Configuration
+#
+# Cache only tiny result sets, so we can fit more in the query cache.
+query_cache_limit		= 128K
+query_cache_size		= 64M
+
+#
+# * InnoDB
+#
+# InnoDB is enabled by default with a 10MB datafile in /var/lib/mysql/.
+# Read the manual for more InnoDB related options. There are many!
+default_storage_engine	= InnoDB
+# you can't just change log file size, requires special procedure
+innodb_buffer_pool_size	= 512M
+innodb_log_buffer_size	= 8M
+innodb_file_per_table	= 1
+innodb_open_files	= 400
+innodb_io_capacity	= 400
+innodb_flush_method	= O_DIRECT

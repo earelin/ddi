@@ -54,7 +54,6 @@ RUN set -x \
 
 # PHP Configuration
 COPY php.ini /usr/local/etc/php/php.ini
-COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # PHP libraries
 ENV PATH /opt/composer/vendor/bin:$PATH
