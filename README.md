@@ -13,7 +13,7 @@ Folder | Description
 ## Services
 
 Container name | Exposed ports | Service provided
---- | ---
+--- | --- | ---
 d8i-d7-cli | 2223 ssh | CLI with tools for Drupal 7
 d8i-d8-cli | 2222 ssh | CLI with tools for Drupal 8
 d8i-db | 3306 mysql | MySQL 5.7
