@@ -53,3 +53,5 @@ RUN set -x \
 # PHP Configuration
 COPY php.ini /usr/local/etc/php/php.ini
 COPY www.conf /usr/local/etc/php-fpm.d/www.conf
+
+EXPOSE 9000

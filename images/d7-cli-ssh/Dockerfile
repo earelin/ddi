@@ -70,6 +70,9 @@ RUN set -x \
 COPY php.ini /usr/local/etc/php/php.ini
 
 RUN set -x \
+    && addgroup developers \
+    && useradd -k /etc/skel -m -s /bin/bash --gid developers developer \
+    && echo "developer:dev" | chpasswd \
     && mkdir /www \
     && chmod 777 /www \
     && rm -rf /tmp/* /var/tmp/*

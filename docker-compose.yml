@@ -2,31 +2,31 @@ version: '3'
 services:
 
   # Web server
-  d8i-web:
-    container_name: d8i-web
+  ddi-web:
+    container_name: ddi-web
     image: nginx:1.12-alpine
     networks:
-      - d8i-network
+      - ddi-network
     ports:
       - '80:80'
       - '443:443'
     depends_on:
-      - d8i-php5
-      - d8i-php7
+      - ddi-php5
+      - ddi-php7
     volumes:
       - "./www:/www:ro"
       - "./conf/nginx/vhosts:/etc/nginx/conf.d:ro"
       - "./conf/nginx/certs:/etc/nginx/certs:ro"
 
   # PHP 7.1 FPM executor pool
-  d8i-php7:
-    container_name: d8i-php7
+  ddi-php7:
+    container_name: ddi-php7
     build: ./images/php7
     depends_on:
-      - d8i-redis
-      - d8i-db
+      - ddi-redis
+      - ddi-db
     networks:
-      - d8i-network
+      - ddi-network
     ports:
       - '9001:9001'
     volumes:
@@ -34,14 +34,14 @@ services:
       - "./www:/www"    
 
   # PHP 5.6 FPM executor pool
-  d8i-php5:
-    container_name: d8i-php5    
+  ddi-php5:
+    container_name: ddi-php5    
     build: ./images/php5
     depends_on:
-      - d8i-memcached
-      - d8i-db
+      - ddi-memcached
+      - ddi-db
     networks:
-      - d8i-network
+      - ddi-network
     ports:
       - '9002:9001'
     volumes:
@@ -49,62 +49,60 @@ services:
       - "./www:/www"
 
   # Memcache service
-  d8i-memcached:
-    container_name: d8i-memcached
+  ddi-memcached:
+    container_name: ddi-memcached
     image: memcached:1.5-alpine    
     networks:
-      - d8i-network
+      - ddi-network
 
   # Redis service
-  d8i-redis:
-    container_name: d8i-redis
+  ddi-redis:
+    container_name: ddi-redis
     image: redis:3.2 
     networks:
-      - d8i-network
+      - ddi-network
     ports:
       - '6379:6379'
 
   # MySQL service
-  d8i-db:
-    container_name: d8i-db
+  ddi-db:
+    container_name: ddi-db
     image: mysql:5.7
     networks:
-      - d8i-network
+      - ddi-network
     ports:
       - '3306:3306'
     volumes:
-      - d8i-mysql-data:/var/lib/mysql:delegated
+      - ddi-mysql-data:/var/lib/mysql:delegated
       - ./conf/drupal-mysql.cnf:/etc/mysql/conf.d/drupal.conf
       - ./scripts/mysql-initdb:/docker-entrypoint-initdb.d:ro
     environment:
       MYSQL_ROOT_PASSWORD: '123'
 
   # Drupal 8 CLI
-  d8i-d8-cli:
-    container_name: d8i-d8-cli
+  ddi-d8-cli:
+    container_name: ddi-d8-cli
     build: ./images/d8-cli-ssh
     networks:
-      - d8i-network
+      - ddi-network
     ports:
       - '2222:2222'
     volumes:
-      - "./var/d8-home:/home:rw"
       - "./www:/www:cached"
 
   # Drupal 7 CLI
-  d8i-d7-cli:
-    container_name: d8i-d7-cli
+  ddi-d7-cli:
+    container_name: ddi-d7-cli
     build: ./images/d7-cli-ssh
     networks:
-      - d8i-network
+      - ddi-network
     ports:
       - '2223:2223'
     volumes:
-      - "./var/d7-home:/home:rw"
       - "./www:/www:cached"
 
 volumes:
-  d8i-mysql-data:  
+  ddi-mysql-data:  
 
 networks:
-  d8i-network:
+  ddi-network:
