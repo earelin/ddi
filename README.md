@@ -60,4 +60,10 @@ Username | Password
 --- | ---
 developer | dev
 
+Database server credentials:
+
+Username | Password
+--- | ---
+root | dev
+
 Websites should be created on the www folder. That folder is accesible from the CLI containers on the path /www and from the computer executing docker from the www folder on the root of this repository.
