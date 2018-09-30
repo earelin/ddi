@@ -49,7 +49,7 @@ The root certificate (ca/ca.pem) has to be installed on the browsers.
 There are two containers configured with tools for building and managing Drupal websites:
 
 Container name | Tools
---- | --- | ---
+--- | ---
 ddi-d7-cli | Composer, Drush 8
 ddi-d8-cli | Composer, Drush 9
 
