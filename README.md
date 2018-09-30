@@ -4,11 +4,11 @@ Drupal infrastructure based on Docker.
 Folder | Description
 --- | ---
 /ca | Root CA
-/aws | AWS Cloudformation templates
 /conf | Configuration files for docker-compose execution
 /conf/nginx/certs | NGINX https certificates
 /conf/nginx/vhosts | NGINX virtual hosts configuration
-/var | Services data storage
+/images | Docker custom images
+/scripts | Start up scripts
 /www | Webserver documents folder
 
 ## Services
